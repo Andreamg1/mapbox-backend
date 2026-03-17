@@ -15,7 +15,7 @@ app = FastAPI(title="Mapbox Driving-Traffic API")
 # ✅ CORS (allows React frontend to call API)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173","https://mapbox-react-neon.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,7 +42,7 @@ def get_routes_api(req: RouteRequest):
         "alternatives": "true",
         "geometries": "geojson",
         "overview": "full",
-        "access_token": MAPBOX_TOKEN
+        "access_token": VITE_TOKEN
     }
 
     response = requests.get(url, params=params)
